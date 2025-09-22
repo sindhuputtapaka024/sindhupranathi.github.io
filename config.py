@@ -1,5 +1,10 @@
 import streamlit as st
 
-ACCESS_TOKEN = st.secrets["goto"]["GOTO_ACCESS_TOKEN"]
-ACCOUNT_KEY = st.secrets["goto"]["GOTO_ACCOUNT_KEY"]
-BASE_URL = st.secrets["goto"]["GOTO_BASE_URL"]
+# GoTo API credentials from secrets
+GOTO_BASE_URL = st.secrets["goto"]["GOTO_BASE_URL"]
+GOTO_ACCESS_TOKEN = st.secrets["goto"]["GOTO_ACCESS_TOKEN"]
+
+# ADP (optional)
+ADP_BASE_URL = st.secrets["adp"]["BASE_URL"]  # if you add ADP secrets
+ADP_CLIENT_ID = st.secrets["adp"]["CLIENT_ID"]
+ADP_CLIENT_SECRET = st.secrets["adp"]["CLIENT_SECRET"]
