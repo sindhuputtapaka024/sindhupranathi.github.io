@@ -1,0 +1,29 @@
+[
+  {
+    "name": "Jane Doe",
+    "status": "Clocked In",
+    "last_input": "22:41",
+    "call_state": "idle",
+    "auto_clock_outs": 3,
+    "manager": "John Smith",
+    "alert": true
+  },
+  {
+    "name": "Mark Lee",
+    "status": "Clocked Out",
+    "last_input": "22:20",
+    "call_state": "active",
+    "auto_clock_outs": 1,
+    "manager": "Anna Kim",
+    "alert": false
+  },
+  {
+    "name": "Alice Brown",
+    "status": "Clocked In",
+    "last_input": "22:35",
+    "call_state": "idle",
+    "auto_clock_outs": 2,
+    "manager": "Sarah Lee",
+    "alert": false
+  }
+]
