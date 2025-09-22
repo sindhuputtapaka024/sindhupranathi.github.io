@@ -3,63 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Dashboard</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f9;
-    }
-    header {
-      background-color: #333;
-      color: white;
-      padding: 10px 0;
-      text-align: center;
-    }
-    .container {
-      display: flex;
-      justify-content: space-around;
-      padding: 20px;
-    }
-    .card {
-      background-color: white;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      width: 200px;
-      padding: 20px;
-      text-align: center;
-    }
-    .card h3 {
-      margin: 0;
-      font-size: 24px;
-    }
-    .card p {
-      font-size: 18px;
-      color: #555;
-    }
-  </style>
+  <title>Nurse Dashboard</title>
+  <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
   <header>
-    <h1>Employee Dashboard</h1>
+    <h1>Nurse Auto Clock-Out Dashboard</h1>
   </header>
-  <div class="container">
-    <div class="card">
-      <h3>Jane Doe</h3>
-      <p>Status: Clocked In</p>
-      <p>Auto Clock-Outs: 3</p>
-    </div>
-    <div class="card">
-      <h3>Mark Lee</h3>
-      <p>Status: Clocked Out</p>
-      <p>Auto Clock-Outs: 1</p>
-    </div>
-    <div class="card">
-      <h3>Alice Brown</h3>
-      <p>Status: Clocked In</p>
-      <p>Auto Clock-Outs: 2</p>
-    </div>
+
+  <div class="container" id="employee-container">
+    <!-- Employee cards will be injected here by JavaScript -->
   </div>
+
+  <script src="scripts/main.js"></script>
 </body>
 </html>
