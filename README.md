@@ -1,8 +1,15 @@
-nurse_dashboard/
-├── index.html          # Main dashboard page
-├── styles/
-│   └── style.css       # Dashboard styling
-├── scripts/
-│   └── main.js         # For simple interactions
-└── data/
-    └── employees.json  # Sample employee data
+nurse360-dashboard/
+│── app.py
+│── requirements.txt
+│── README.md
+│── .gitignore
+│── .streamlit/
+│   └── secrets.toml
+│── .devcontainer/
+│   └── devcontainer.json
+│── logic/
+│   ├── __init__.py
+│   ├── overall.py
+│   └── userwise.py
+│── data/
+│   └── sample_data.json
