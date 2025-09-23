@@ -1,37 +1,29 @@
 import streamlit as st
-import pandas as pd
-from logic.calls import process_calls_and_inactivity
 from datetime import datetime
+from logic import calls
 
-def render_userwise_view(start_date, end_date):
-    """
-    Render per-user dashboard: calls, inactive time, auto clock-outs.
-    """
-    st.header("User-wise Dashboard")
+def render_userwise_view(start_date, end_date, user_id, employees_list):
+    emp = next(e for e in employees_list if e["id"] == user_id)
+    st.header(f"Dashboard for {emp['name']}")
 
-    # Example employee list
-    employees_list = [
-        {"id":"u_123", "name":"Jane Doe", "manager":"John Smith", "last_input_ts": datetime.utcnow() - pd.Timedelta(minutes=25)},
-        {"id":"u_124", "name":"Bob Lee", "manager":"Alice Wong", "last_input_ts": datetime.utcnow() - pd.Timedelta(minutes=10)}
-    ]
-
-    # Fetch GoTo calls and process inactivity
-    df_calls = process_calls_and_inactivity(employees_list, start_date, end_date)
+    # Process calls
+    df_calls = calls.process_calls_and_inactivity(employees_list, start_date, end_date)
 
     if df_calls.empty:
         st.info("No calls in this date range.")
         return
 
-    # Show table of calls per user
-    st.subheader("Call Activity")
-    st.dataframe(df_calls)
+    # Filter for this user
+    user_calls = df_calls[df_calls["user_id"] == user_id]
 
-    # Show summary per user
+    st.subheader("Call Activity")
+    st.dataframe(user_calls)
+
+    # Auto Clock-Out Summary
     st.subheader("Auto Clock-Out Summary")
-    for emp in employees_list:
-        cache = getattr(__import__("logic.calls"), "cache")  # access cache from calls.py
-        if emp["id"] in cache:
-            st.markdown(f"**{emp['name']}**")
-            times = ", ".join(cache[emp["id"]]["times"])
-            reasons = ", ".join(cache[emp["id"]]["reasons"])
-            st.write(f"Auto Clock-Outs: {len(cache[emp['id']]['times'])} | Times: {times} | Reasons: {reasons}")
+    if user_id in calls.cache:
+        times = ", ".join(calls.cache[user_id]["times"])
+        reasons = ", ".join(calls.cache[user_id]["reasons"])
+        st.write(f"Auto Clock-Outs: {len(calls.cache[user_id]['times'])}")
+        st.write(f"Times: {times}")
+        st.write(f"Reasons: {reasons}")
